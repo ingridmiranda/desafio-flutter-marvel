@@ -1,41 +1,28 @@
+import 'package:desafio_flutter_marvel/model/components_models/components_models.dart';
+import 'package:desafio_flutter_marvel/model/services/get_data_dio_services.dart';
+import 'package:desafio_flutter_marvel/utils/util.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:desafio_flutter_marvel/model/components_models/components_models.dart';
-import 'package:desafio_flutter_marvel/model/repositories/get_data_repository.dart';
-import 'package:desafio_flutter_marvel/model/services/get_data_dio_services.dart';
-
 class GetDataDioServicesMock extends Mock implements GetDataDioServices {}
+
+class DioMock extends Mock implements Dio {}
 
 void main() {
   final serviceMock = GetDataDioServicesMock();
-  final sut = GetDataRepository(serviceMock);
 
-  test('Should call getDioCharacters', () async {
-    when(() => serviceMock.getDioCharacters())
-        .thenAnswer((_) async => responseMock.data);
+  test(
+    'Should call getData with characters parameter if called getDioCharacters',
+    () async {
+      when(() => serviceMock.getData('characters'))
+          .thenAnswer((_) async => generalResponseMock);
 
-    await sut.getCharacters();
+      final result = await serviceMock.getDioCharacters();
 
-    verify(() => serviceMock.getDioCharacters());
-  });
-
-  test('Should return CharactersDataModel if requisition is valid', () async {
-    when(() => serviceMock.getDioCharacters())
-        .thenAnswer((_) async => responseMock.data);
-
-    var result = await sut.getCharacters();
-
-    expect(result, responseMock.data);
-  });
-
-  test('Should return Null if requisition is invalid', () async {
-    when(() => serviceMock.getDioCharacters()).thenAnswer((_) async => null);
-
-    var result = await sut.getCharacters();
-
-    expect(result, null);
-  });
+      expect(result, generalResponseMock.data);
+    },
+  );
 }
 
 var responseMock = ResponseModel(
@@ -57,3 +44,7 @@ var responseMock = ResponseModel(
                 name: "Avengers: The Initiative (2007) #14")
           ]))
     ]));
+
+var generalResponseMock = Response(
+    requestOptions: RequestOptions(
+        path: '${Constants.urlService}characters', data: responseMock.data));

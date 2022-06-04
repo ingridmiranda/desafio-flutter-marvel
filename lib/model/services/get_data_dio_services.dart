@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import '../../utils/util.dart';
 
 class GetDataDioServices {
-  Future<Response<dynamic>?> getData(String parameter) async {
+  Future<Response<dynamic>?>? getData(String parameter) async {
     try {
       final ts = DateTime.now().millisecondsSinceEpoch.toString();
       final hash = Utils.textToMd5(ts + Keys.privateKey + Keys.apiKey);
