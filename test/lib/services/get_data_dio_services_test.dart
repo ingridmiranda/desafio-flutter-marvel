@@ -23,6 +23,18 @@ void main() {
       expect(result, generalResponseMock.data);
     },
   );
+
+  test(
+    'Should return Null if invalid data is returned from called getData',
+    () async {
+      when(() => serviceMock.getData('characters'))
+          .thenAnswer((_) async => notFoundErrorResponseMock);
+
+      final result = await serviceMock.getDioCharacters();
+
+      expect(result, null);
+    },
+  );
 }
 
 var responseMock = ResponseModel(
@@ -46,5 +58,10 @@ var responseMock = ResponseModel(
     ]));
 
 var generalResponseMock = Response(
+    requestOptions: RequestOptions(
+        path: '${Constants.urlService}characters', data: responseMock.data));
+
+var notFoundErrorResponseMock = Response(
+    statusCode: 404,
     requestOptions: RequestOptions(
         path: '${Constants.urlService}characters', data: responseMock.data));
