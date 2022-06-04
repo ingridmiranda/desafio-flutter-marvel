@@ -1,10 +1,11 @@
-import 'package:desafio_flutter_marvel/model/components_models/components_models.dart';
-import 'package:desafio_flutter_marvel/model/errors/dio_errors.dart';
-import 'package:desafio_flutter_marvel/model/services/get_data_dio_services.dart';
-import 'package:desafio_flutter_marvel/utils/util.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+
+import 'package:desafio_flutter_marvel/model/components_models/components_models.dart';
+import 'package:desafio_flutter_marvel/model/services/get_data_dio_services.dart';
+
+import 'package:desafio_flutter_marvel/utils/util.dart';
 
 class GetDataDioServicesMock extends Mock implements GetDataDioServices {}
 

@@ -1,7 +1,7 @@
-import 'package:desafio_flutter_marvel/model/components_models/components_models.dart';
 import 'package:dio/dio.dart';
 
 import '../../utils/util.dart';
+import '../components_models/components_models.dart';
 
 class GetDataDioServices {
   Future<Response<dynamic>?> getData(String parameter) async {
