@@ -1,3 +1,5 @@
+import 'package:desafio_flutter_marvel/utils/constants.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -10,13 +12,23 @@ class GetDataDioServicesMock extends Mock implements GetDataDioServices {}
 void main() {
   final serviceMock = GetDataDioServicesMock();
   final sut = GetDataRepository(serviceMock);
-  when(() => serviceMock.getDioCharacters())
-      .thenAnswer((_) async => responseMock.data);
 
   test('Should call getDioCharacters', () async {
+    when(() => serviceMock.getDioCharacters())
+        .thenAnswer((_) async => responseMock.data);
+
     await sut.getCharacters();
 
     verify(() => serviceMock.getDioCharacters());
+  });
+
+  test('Should return CharactersDataModel if requisition is valid', () async {
+    when(() => serviceMock.getDioCharacters())
+        .thenAnswer((_) async => responseMock.data);
+
+    var result = await sut.getCharacters();
+
+    expect(result, responseMock.data);
   });
 }
 
