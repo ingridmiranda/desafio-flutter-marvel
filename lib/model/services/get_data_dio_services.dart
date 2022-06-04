@@ -16,7 +16,7 @@ class GetDataDioServices {
     }
   }
 
-  Future<CharactersDataModel?> getDioCharacters() async {
+  Future<CharactersDataModel?>? getDioCharacters() async {
     var response = await getData('characters');
     if (response != null) {
       return ResponseModel.fromJson(response.data).data;
