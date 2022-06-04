@@ -30,6 +30,14 @@ void main() {
 
     expect(result, responseMock.data);
   });
+
+  test('Should return Null if requisition is invalid', () async {
+    when(() => serviceMock.getDioCharacters()).thenAnswer((_) async => null);
+
+    var result = await sut.getCharacters();
+
+    expect(result, null);
+  });
 }
 
 var responseMock = ResponseModel(
