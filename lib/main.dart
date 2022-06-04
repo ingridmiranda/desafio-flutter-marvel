@@ -1,6 +1,8 @@
+import 'package:desafio_flutter_marvel/utils/dependency_injection.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  DependencyInjection.init();
   runApp(const MyApp());
 }
 

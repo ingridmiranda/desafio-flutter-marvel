@@ -4,16 +4,17 @@ import 'package:dio/dio.dart';
 import '../../utils/util.dart';
 
 class GetDataDioServices {
-  Future<Response<dynamic>?>? getData(String parameter) async {
+  Future<Response<dynamic>?> getData(String parameter) async {
+    Response<dynamic>? response;
     try {
       final ts = DateTime.now().millisecondsSinceEpoch.toString();
       final hash = Utils.textToMd5(ts + Keys.privateKey + Keys.apiKey);
-      var response = await Dio().get('${Constants.urlService}$parameter',
+      response = await Dio().get('${Constants.urlService}$parameter',
           queryParameters: {'ts': ts, 'apikey': Keys.apiKey, 'hash': hash});
-      return response;
-    } on DioError {
-      return null;
+    } on DioError catch (error) {
+      Utils.handlingExceptions(error.response?.statusCode);
     }
+    return response;
   }
 
   Future<CharactersDataModel?>? getDioCharacters() async {

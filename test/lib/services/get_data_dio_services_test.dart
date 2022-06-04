@@ -1,4 +1,5 @@
 import 'package:desafio_flutter_marvel/model/components_models/components_models.dart';
+import 'package:desafio_flutter_marvel/model/errors/dio_errors.dart';
 import 'package:desafio_flutter_marvel/model/services/get_data_dio_services.dart';
 import 'package:desafio_flutter_marvel/utils/util.dart';
 import 'package:dio/dio.dart';
@@ -29,6 +30,17 @@ void main() {
     () async {
       when(() => serviceMock.getData('characters'))
           .thenAnswer((_) async => notFoundErrorResponseMock);
+
+      final result = await serviceMock.getDioCharacters();
+
+      expect(result, null);
+    },
+  );
+
+  test(
+    'Should return Null if invalid data is returned from called getData',
+    () async {
+      when(() => serviceMock.getData('characters')).thenThrow(DioError);
 
       final result = await serviceMock.getDioCharacters();
 
