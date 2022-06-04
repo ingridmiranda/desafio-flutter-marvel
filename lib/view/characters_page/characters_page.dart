@@ -30,9 +30,16 @@ class _CharactersPageState extends State<CharactersPage> {
       return Scaffold(
           appBar: AppBar(
             backgroundColor: AppColors.colorDark,
-            title: const Text('SoftDesign Challenge'),
+            title: const Padding(
+              padding: EdgeInsets.only(left: 10),
+              child: Text('SoftDesign Challenge'),
+            ),
             actions: [
-              IconButton(onPressed: () {}, icon: const Icon(Icons.menu))
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child:
+                    IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
+              )
             ],
           ),
           backgroundColor: AppColors.colorDark,

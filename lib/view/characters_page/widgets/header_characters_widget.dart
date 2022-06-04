@@ -17,7 +17,7 @@ class HeaderCharactersWidget extends StatelessWidget {
             Flexible(
               flex: 8,
               child: Container(
-                width: MediaQuery.of(context).size.width,
+                width: MediaQuery.of(context).size.width - 40,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                         opacity: 0.8,
