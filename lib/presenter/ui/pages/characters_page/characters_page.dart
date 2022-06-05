@@ -17,6 +17,7 @@ class _CharactersPageState extends State<CharactersPage> {
 
   @override
   void initState() {
+    controller.scrollController = ScrollController();
     controller.getCharacters(context);
     super.initState();
   }
@@ -54,7 +55,9 @@ class _CharactersPageState extends State<CharactersPage> {
                     ? ListCharactersWidget(controller: controller)
                     : controller.charactersOptions == CharactersOption.loading
                         ? const LoadingCharacterWidget()
-                        : const EmptyCharacterWidget(),
+                        : controller.charactersOptions == CharactersOption.empty
+                            ? const EmptyCharacterWidget()
+                            : const SizedBox(),
               ),
             ],
           ));
