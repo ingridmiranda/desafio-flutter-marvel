@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:desafio_flutter_marvel/presenter/ui/shared/widgets/network_image_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../view_model/details/details_view_model.dart';
@@ -27,8 +28,9 @@ class ComicsCarouselWidget extends StatelessWidget {
                   children: [
                     Flexible(
                       flex: 8,
-                      child: Image.network(
-                          '${controller.comicsList?[itemIndex].thumbnail.path}/portrait_xlarge.${controller.comicsList?[itemIndex].thumbnail.extension}'),
+                      child: NetworkImageWidget(
+                          imageUrl:
+                              '${controller.comicsList?[itemIndex].thumbnail.path}/portrait_xlarge.${controller.comicsList?[itemIndex].thumbnail.extension}'),
                     ),
                     Flexible(
                         flex: 2,

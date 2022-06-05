@@ -34,6 +34,7 @@ class ItemListCharacters extends StatelessWidget {
               flex: 3,
               child: CircleAvatar(
                 radius: 35,
+                backgroundColor: AppColors.colorSecondary,
                 backgroundImage: NetworkImage(
                     '${controller.charactersList?[index].thumbnail.path}/standard_medium.${controller.charactersList?[index].thumbnail.extension}'),
               ),
