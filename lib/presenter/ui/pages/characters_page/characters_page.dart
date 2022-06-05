@@ -1,8 +1,7 @@
+import 'package:desafio_flutter_marvel/utils/dependency_injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import '../../../../external/external.dart';
-import '../../../../infra/infra.dart';
 import '../../../view_model/view_model.dart';
 import '../../theme/theme.dart';
 import 'widgets/widgets.dart';
@@ -15,8 +14,7 @@ class CharactersPage extends StatefulWidget {
 }
 
 class _CharactersPageState extends State<CharactersPage> {
-  final controller =
-      CharactersViewModel(repository: GetDataRepository(GetDataDioServices()));
+  final controller = s1.get<CharactersViewModel>();
 
   @override
   void initState() {
