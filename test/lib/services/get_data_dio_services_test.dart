@@ -13,14 +13,15 @@ class DioMock extends Mock implements Dio {}
 
 void main() {
   final serviceMock = GetDataDioServicesMock();
+  const offset = 0;
 
   test(
     'Should call getData with characters parameter if called getDioCharacters',
     () async {
-      when(() => serviceMock.getData('characters'))
+      when(() => serviceMock.getData('characters', offset))
           .thenAnswer((_) async => generalResponseMock);
 
-      final result = await serviceMock.getDioCharacters();
+      final result = await serviceMock.getDioCharacters(offset);
 
       expect(result, generalResponseMock.data);
     },
@@ -29,10 +30,10 @@ void main() {
   test(
     'Should return Null if invalid data is returned from called getData',
     () async {
-      when(() => serviceMock.getData('characters'))
+      when(() => serviceMock.getData('characters', offset))
           .thenAnswer((_) async => notFoundErrorResponseMock);
 
-      final result = await serviceMock.getDioCharacters();
+      final result = await serviceMock.getDioCharacters(offset);
 
       expect(result, null);
     },
@@ -41,9 +42,9 @@ void main() {
   test(
     'Should return Null if invalid data is returned from called getData',
     () async {
-      when(() => serviceMock.getData('characters')).thenThrow(DioError);
+      when(() => serviceMock.getData('characters', offset)).thenThrow(DioError);
 
-      final result = await serviceMock.getDioCharacters();
+      final result = await serviceMock.getDioCharacters(offset);
 
       expect(result, null);
     },

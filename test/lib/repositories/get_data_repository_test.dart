@@ -10,29 +10,31 @@ class GetDataDioServicesMock extends Mock implements GetDataDioServices {}
 void main() {
   final serviceMock = GetDataDioServicesMock();
   final sut = GetDataRepository(serviceMock);
+  const offset = 0;
 
   test('Should call getDioCharacters', () async {
-    when(() => serviceMock.getDioCharacters())
+    when(() => serviceMock.getDioCharacters(offset))
         .thenAnswer((_) async => responseMock.data);
 
-    await sut.getCharacters();
+    await sut.getCharacters(offset);
 
-    verify(() => serviceMock.getDioCharacters());
+    verify(() => serviceMock.getDioCharacters(offset));
   });
 
   test('Should return CharactersDataModel if requisition is valid', () async {
-    when(() => serviceMock.getDioCharacters())
+    when(() => serviceMock.getDioCharacters(offset))
         .thenAnswer((_) async => responseMock.data);
 
-    var result = await sut.getCharacters();
+    var result = await sut.getCharacters(offset);
 
     expect(result, responseMock.data);
   });
 
   test('Should return Null if requisition is invalid', () async {
-    when(() => serviceMock.getDioCharacters()).thenAnswer((_) async => null);
+    when(() => serviceMock.getDioCharacters(offset))
+        .thenAnswer((_) async => null);
 
-    var result = await sut.getCharacters();
+    var result = await sut.getCharacters(offset);
 
     expect(result, null);
   });

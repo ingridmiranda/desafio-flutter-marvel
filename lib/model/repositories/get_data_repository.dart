@@ -6,7 +6,7 @@ class GetDataRepository {
 
   GetDataRepository(this.dioServices);
 
-  Future<CharactersDataModel?> getCharacters() async {
-    return await dioServices.getDioCharacters();
+  Future<CharactersDataModel?> getCharacters(int offset) async {
+    return await dioServices.getDioCharacters(offset);
   }
 }

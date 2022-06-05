@@ -21,7 +21,15 @@ class _CharactersPageState extends State<CharactersPage> {
   @override
   void initState() {
     controller.getCharacters(context);
+    controller.scrollController
+        .addListener(controller.infiniteScrolling(context));
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.scrollController.dispose();
+    super.dispose();
   }
 
   @override
