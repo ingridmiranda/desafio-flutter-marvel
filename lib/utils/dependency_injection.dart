@@ -1,4 +1,5 @@
 import 'package:desafio_flutter_marvel/presenter/view_model/characters/characters_view_model.dart';
+import 'package:desafio_flutter_marvel/presenter/view_model/details/details_view_model.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -15,5 +16,6 @@ class DependencyInjection {
         GetDataRepository(GetDataDioServices()));
     s1.registerSingleton<CharactersViewModel>(CharactersViewModel(
         repository: GetDataRepository(GetDataDioServices())));
+    s1.registerSingleton<DetailsViewModel>(DetailsViewModel());
   }
 }

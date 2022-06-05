@@ -33,7 +33,7 @@ class HeaderCharactersWidget extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 padding: const EdgeInsets.only(left: 25, bottom: 8),
                 child: const Text(
-                  'Personagens',
+                  'Characters',
                   style: TextStyle(
                       fontSize: 20,
                       color: AppColors.colorPrimaryLight,

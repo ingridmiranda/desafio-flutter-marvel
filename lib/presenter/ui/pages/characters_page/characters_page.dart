@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../../view_model/view_model.dart';
-import '../../theme/theme.dart';
 import 'widgets/widgets.dart';
 
 class CharactersPage extends StatefulWidget {
@@ -33,7 +32,6 @@ class _CharactersPageState extends State<CharactersPage> {
     return Observer(builder: (_) {
       return Scaffold(
           appBar: AppBar(
-            backgroundColor: AppColors.colorDark,
             title: const Padding(
               padding: EdgeInsets.only(left: 10),
               child: Text('SoftDesign Challenge'),
@@ -46,7 +44,6 @@ class _CharactersPageState extends State<CharactersPage> {
               )
             ],
           ),
-          backgroundColor: AppColors.colorDark,
           body: Flex(
             direction: Axis.vertical,
             children: [

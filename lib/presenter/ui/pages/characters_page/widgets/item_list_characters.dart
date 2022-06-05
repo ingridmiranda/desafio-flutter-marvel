@@ -1,3 +1,5 @@
+import 'package:desafio_flutter_marvel/presenter/view_model/details/details_view_model.dart';
+import 'package:desafio_flutter_marvel/utils/dependency_injection.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../view_model/view_model.dart';
@@ -16,6 +18,8 @@ class ItemListCharacters extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        final detailsController = s1.get<DetailsViewModel>();
+        detailsController.character = controller.charactersList?[index];
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const DetailsPage()));
       },
@@ -30,7 +34,7 @@ class ItemListCharacters extends StatelessWidget {
               child: CircleAvatar(
                 radius: 35,
                 backgroundImage: NetworkImage(
-                    '${controller.charactersList?[index].thumbnail.path}/portrait_small.${controller.charactersList?[index].thumbnail.extension}'),
+                    '${controller.charactersList?[index].thumbnail.path}/standard_medium.${controller.charactersList?[index].thumbnail.extension}'),
               ),
             ),
             const Flexible(flex: 1, child: SizedBox(width: 30)),

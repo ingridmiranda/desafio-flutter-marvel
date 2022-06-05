@@ -12,8 +12,11 @@ class AppWidget extends StatelessWidget {
       title: 'SoftDesign Challenge',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        textTheme: Theme.of(context).textTheme.apply(
+            bodyColor: AppColors.colorLight,
+            displayColor: AppColors.colorLight),
         backgroundColor: AppColors.colorDark,
+        scaffoldBackgroundColor: AppColors.colorDark,
         appBarTheme: const AppBarTheme(color: AppColors.colorDark),
       ),
       home: const SplashPage(),
