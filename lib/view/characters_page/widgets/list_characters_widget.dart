@@ -26,6 +26,9 @@ class ListCharactersWidget extends StatelessWidget {
                   controller: controller.scrollController,
                   itemCount: controller.charactersList?.length,
                   itemBuilder: (BuildContext buildContext, int index) {
+                    controller.scrollController.addListener(
+                        () => controller.infiniteScrolling(context));
+
                     return Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 15),
