@@ -1,16 +1,61 @@
-# desafio_flutter_marvel
+# Desafio Flutter Marvel - SoftDesign
 
-A new Flutter project.
+## Sobre
+Essa é uma aplicação criada em Flutter com o intuito de consumir os dados API da Marvel e listar os personagens existentes, com seus respectivos nomes e fotos, utilizando paginação infinita. Caso ocorra um clique em um personagem, deve exibir uma tela com detalhes, tais como: Foto, nome, descrição e uma lista com os quadrinhos em que o personagem participou.
 
-## Getting Started
+## Tecnologias externas utilizadas
 
-This project is a starting point for a Flutter application.
+- API Rest: Marvel, disponível no link https://developer.marvel.com/
 
-A few resources to get you started if this is your first Flutter project:
+## Pacotes do Flutter
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+#### Para integração com API rest:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- dio
+- json_annotation
+- json_serializable
+
+#### Para testes
+- mocktail
+- faker
+
+#### Para gerenciamento de estados
+- mobx
+- mobx_codegen
+
+#### Para injeção de dependências
+- get_it
+
+#### Para checar conectividade com internet
+- connectivity_plus
+
+#### Para gerar hash da API
+- crypto
+
+#### Para complementar elementos de UI
+- animated_splash_screen
+- carousel_slider
+- page_transition
+
+## APK 
+
+O APK para essa aplicação pode ser acessado no seguinte link: 
+
+
+
+## Build
+
+Por questões de segurança, para buildar esse projeto, é necessário criar uma conta da API da Marvel (https://developer.marvel.com/documentation/getting_started). Após isso, adicionar ao projeto um arquivo lib/utils/keys.dart e dentro dele adicionar as suas chaves públicas e privadas da seguinte forma:
+
+ ``abstract class Keys {``
+ 
+ ``   static const apiKey = 'inserir chave pública';``
+  
+``  static const privateKey = 'inserir chave privada';``
+
+``}``
+
+
+
+
+
