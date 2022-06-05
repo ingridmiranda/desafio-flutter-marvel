@@ -1,6 +1,7 @@
 import 'package:desafio_flutter_marvel/domain/domain.dart';
 import 'package:desafio_flutter_marvel/external/external.dart';
 import 'package:desafio_flutter_marvel/infra/infra.dart';
+import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -10,6 +11,7 @@ void main() {
   final serviceMock = GetDataDioServicesMock();
   final sut = GetDataRepository(serviceMock);
   const offset = 0;
+  var id = faker.randomGenerator.integer(1000);
 
   test('Should call getDioCharacters', () async {
     when(() => serviceMock.getDioCharacters(offset))
@@ -37,6 +39,32 @@ void main() {
 
     expect(result, null);
   });
+
+  test('Should call getComics', () async {
+    when(() => serviceMock.getDioComics(id))
+        .thenAnswer((_) async => responseComicsMock.data);
+
+    await sut.getComics(id);
+
+    verify(() => serviceMock.getDioComics(id));
+  });
+
+  test('Should return ComicsResponseModel if requisition is valid', () async {
+    when(() => serviceMock.getDioComics(id))
+        .thenAnswer((_) async => responseComicsMock.data);
+
+    var result = await sut.getComics(id);
+
+    expect(result, responseComicsMock.data);
+  });
+
+  test('Should return Null if Comics requisition is invalid', () async {
+    when(() => serviceMock.getDioComics(id)).thenAnswer((_) async => null);
+
+    var result = await sut.getComics(id);
+
+    expect(result, null);
+  });
 }
 
 var responseMock = ResponseModel(
@@ -57,4 +85,18 @@ var responseMock = ResponseModel(
                 resourceURI: "http://gateway.marvel.com/v1/public/comics/21366",
                 name: "Avengers: The Initiative (2007) #14")
           ]))
+    ]));
+
+var responseComicsMock = GeneralResponseModel(
+    code: 200,
+    status: 'ok',
+    attributionText: '',
+    data: ComicsResponseModel(total: 1, results: [
+      ComicsResultsModel(
+        id: 22506,
+        title: "Avengers: The Initiative (2007) #19",
+        thumbnail: ComicsThumbnailModel(
+            extension: "jpg",
+            path: "http://i.annihil.us/u/prod/marvel/i/mg/d/03/58dd080719806"),
+      )
     ]));
