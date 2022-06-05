@@ -20,7 +20,7 @@ class _CharactersPageState extends State<CharactersPage> {
 
   @override
   void initState() {
-    controller.getCharacters();
+    controller.getCharacters(context);
     super.initState();
   }
 
@@ -53,7 +53,7 @@ class _CharactersPageState extends State<CharactersPage> {
                     ? ListCharactersWidget(controller: controller)
                     : controller.charactersOptions == CharactersOption.loading
                         ? const LoadingCharacterWidget()
-                        : const SizedBox(),
+                        : const EmptyCharacterWidget(),
               ),
             ],
           ));

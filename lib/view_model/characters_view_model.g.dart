@@ -45,8 +45,8 @@ mixin _$CharactersViewModel on CharactersViewModelBase, Store {
       AsyncAction('CharactersViewModelBase.getCharacters', context: context);
 
   @override
-  Future<dynamic> getCharacters() {
-    return _$getCharactersAsyncAction.run(() => super.getCharacters());
+  Future<dynamic> getCharacters(BuildContext context) {
+    return _$getCharactersAsyncAction.run(() => super.getCharacters(context));
   }
 
   @override

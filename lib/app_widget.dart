@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'view/characters_page/splash/splash_page.dart';
+import 'view/splash/splash_page.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);

@@ -1,5 +1,7 @@
 import 'package:desafio_flutter_marvel/model/components_models/components_models.dart';
 import 'package:desafio_flutter_marvel/model/repositories/get_data_repository.dart';
+import 'package:desafio_flutter_marvel/utils/util.dart';
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
 part 'characters_view_model.g.dart';
@@ -20,10 +22,15 @@ abstract class CharactersViewModelBase with Store {
   CharactersDataModel? characters;
 
   @action
-  Future getCharacters() async {
+  Future getCharacters(BuildContext context) async {
     charactersOptions = CharactersOption.loading;
 
-    characters = await repository.getCharacters();
+    if (await Utils.isConnected()) {
+      characters = await repository.getCharacters();
+    } else {
+      charactersOptions = CharactersOption.empty;
+      Utils.showInternetSnackbar(context);
+    }
 
     if (characters != null) {
       charactersOptions = CharactersOption.show;
