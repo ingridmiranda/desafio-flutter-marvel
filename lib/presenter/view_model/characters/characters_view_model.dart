@@ -44,8 +44,8 @@ abstract class CharactersViewModelBase with Store {
     }
 
     if (await Utils.isConnected()) {
-      offset += 20;
       characters = await repository.getCharacters(offset);
+      offset += 20;
       if (characters != null && characters!.results.isNotEmpty) {
         charactersList?.addAll(characters!.results);
       }

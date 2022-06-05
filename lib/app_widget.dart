@@ -14,10 +14,13 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         textTheme: Theme.of(context).textTheme.apply(
             bodyColor: AppColors.colorLight,
-            displayColor: AppColors.colorLight),
+            displayColor: AppColors.colorLight,
+            fontFamily: 'OpenSans'),
         backgroundColor: AppColors.colorDark,
         scaffoldBackgroundColor: AppColors.colorDark,
-        appBarTheme: const AppBarTheme(color: AppColors.colorDark),
+        appBarTheme: const AppBarTheme(
+          color: AppColors.colorDark,
+        ),
       ),
       home: const SplashPage(),
     );
