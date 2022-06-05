@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
-import '../model/repositories/get_data_repository.dart';
-import '../model/services/get_data_dio_services.dart';
+import '../external/external.dart';
+import '../infra/infra.dart';
 
 final s1 = GetIt.instance;
 

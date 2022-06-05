@@ -5,7 +5,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 
-import '../model/errors/dio_errors.dart';
+import '../infra/infra.dart';
 
 abstract class Utils {
   static String textToMd5(String text) {
