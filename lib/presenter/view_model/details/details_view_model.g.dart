@@ -25,10 +25,44 @@ mixin _$DetailsViewModel on DetailsViewModelBase, Store {
     });
   }
 
+  late final _$comicsOptionsAtom =
+      Atom(name: 'DetailsViewModelBase.comicsOptions', context: context);
+
+  @override
+  ComicsOption get comicsOptions {
+    _$comicsOptionsAtom.reportRead();
+    return super.comicsOptions;
+  }
+
+  @override
+  set comicsOptions(ComicsOption value) {
+    _$comicsOptionsAtom.reportWrite(value, super.comicsOptions, () {
+      super.comicsOptions = value;
+    });
+  }
+
+  late final _$comicsListAtom =
+      Atom(name: 'DetailsViewModelBase.comicsList', context: context);
+
+  @override
+  ObservableList<ComicsResultsModel>? get comicsList {
+    _$comicsListAtom.reportRead();
+    return super.comicsList;
+  }
+
+  @override
+  set comicsList(ObservableList<ComicsResultsModel>? value) {
+    _$comicsListAtom.reportWrite(value, super.comicsList, () {
+      super.comicsList = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
-character: ${character}
+character: ${character},
+comicsOptions: ${comicsOptions},
+comicsList: ${comicsList}
     ''';
   }
 }

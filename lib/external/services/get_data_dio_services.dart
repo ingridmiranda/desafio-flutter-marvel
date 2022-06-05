@@ -31,4 +31,21 @@ class GetDataDioServices {
     }
     return null;
   }
+
+  Future<ComicsResponseModel?> getDioComics(int id) async {
+    Response<dynamic>? response;
+    ComicsResponseModel? result;
+    try {
+      final ts = DateTime.now().millisecondsSinceEpoch.toString();
+      final hash = Utils.textToMd5(ts + Keys.privateKey + Keys.apiKey);
+      response = await Dio().get('${Constants.urlService}characters/$id/comics',
+          queryParameters: {'ts': ts, 'apikey': Keys.apiKey, 'hash': hash});
+    } on DioError catch (error) {
+      Utils.handlingExceptions(error.response?.statusCode);
+    }
+    if (response != null) {
+      result = GeneralResponseModel.fromJson(response.data).data;
+    }
+    return result;
+  }
 }

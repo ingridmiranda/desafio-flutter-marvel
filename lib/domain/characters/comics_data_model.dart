@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'domain.dart';
+import './characters.dart';
 
 part 'comics_data_model.g.dart';
 

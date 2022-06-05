@@ -19,7 +19,8 @@ class ItemListCharacters extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         final detailsController = s1.get<DetailsViewModel>();
-        detailsController.character = controller.charactersList?[index];
+        detailsController.openDetailsInfo(controller.charactersList?[index],
+            controller.characters?.results[index].id ?? 0, context);
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const DetailsPage()));
       },

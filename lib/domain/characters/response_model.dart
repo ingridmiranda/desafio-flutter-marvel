@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'domain.dart';
+import './characters.dart';
 
 part 'response_model.g.dart';
 

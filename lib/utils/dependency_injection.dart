@@ -16,6 +16,7 @@ class DependencyInjection {
         GetDataRepository(GetDataDioServices()));
     s1.registerSingleton<CharactersViewModel>(CharactersViewModel(
         repository: GetDataRepository(GetDataDioServices())));
-    s1.registerSingleton<DetailsViewModel>(DetailsViewModel());
+    s1.registerSingleton<DetailsViewModel>(
+        DetailsViewModel(GetDataRepository(GetDataDioServices())));
   }
 }

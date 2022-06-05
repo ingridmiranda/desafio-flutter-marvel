@@ -9,4 +9,8 @@ class GetDataRepository {
   Future<CharactersDataModel?> getCharacters(int offset) async {
     return await dioServices.getDioCharacters(offset);
   }
+
+  Future<ComicsResponseModel?> getComics(int id) async {
+    return await dioServices.getDioComics(id);
+  }
 }
